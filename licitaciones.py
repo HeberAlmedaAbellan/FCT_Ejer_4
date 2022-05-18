@@ -293,7 +293,6 @@ class Licitaciones:
         my_wb.save("licitaciones.xlsx")
 
     def move_file(self):
-        now=datetime.today()
         os.rename("./licitaciones.xlsx", self.ruta_expedientes+"/licitaciones-" +
                   str(datetime.today().strftime('%A-%B-%d-%Y-%H-%M-%S'))+".xlsx")
 

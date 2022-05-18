@@ -256,38 +256,42 @@ class Licitaciones:
         my_sheet = my_wb.active
 
         # cabeceras
+
+        print(self.titles)
+        print(self.num_cols)
+
         for i in range(self.num_cols):
             c1 = my_sheet.cell(row=1, column=i+1)
             c1.value = self.titles[i]
 
         # contenido primera columna
         for i in range(self.num_rows):
-            c1 = my_sheet.cell(row=i+1, column=1)
+            c1 = my_sheet.cell(row=i+2, column=1)
             c1.value = self.expediente[i]
 
         # contenido segunda columna
         for i in range(self.num_rows):
-            c1 = my_sheet.cell(row=i + 1, column=2)
+            c1 = my_sheet.cell(row=i + 2, column=2)
             c1.value = self.tipo_contrato[i]
 
         # contenido tercera columna
         for i in range(self.num_rows):
-            c1 = my_sheet.cell(row=i + 1, column=3)
+            c1 = my_sheet.cell(row=i + 2, column=3)
             c1.value = self.estado[i]
 
         # contenido cuarta columna
         for i in range(self.num_rows):
-            c1 = my_sheet.cell(row=i + 1, column=4)
+            c1 = my_sheet.cell(row=i + 2, column=4)
             c1.value = self.importe[i]
 
         # contenido quinta columna
         for i in range(self.num_rows):
-            c1 = my_sheet.cell(row=i + 1, column=5)
+            c1 = my_sheet.cell(row=i + 2, column=5)
             c1.value = self.fechas[i]
 
         # contenido sexta columna
         for i in range(self.num_rows):
-            c1 = my_sheet.cell(row=i + 1, column=6)
+            c1 = my_sheet.cell(row=i + 2, column=6)
             c1.value = self.organo_contratacion[i]
 
         my_wb.save("licitaciones.xlsx")

@@ -153,10 +153,11 @@ class Licitaciones:
     def get_data(self):
 
         titles =[]
+        TABLE_ID = "myTablaBusquedaCustom"
 
         for i in range(self.num_cols):
             t = \
-                self.driver.find_element(By.XPATH, f"//*[@id='myTablaBusquedaCustom']/thead/tr/th[{i+1}]/div/span").text
+                self.driver.find_element(By.XPATH, f"//*[@id='{TABLE_ID}']/thead/tr/th[{i+1}]/div/span").text
             titles.append(t)
 
         self.titles = titles
@@ -166,7 +167,7 @@ class Licitaciones:
         for i in range(self.num_rows):
             d = \
                 self.driver.find_element(
-                    By.XPATH, f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i+1}] / td[1] / div[2]").text
+                    By.XPATH, f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i+1}] / td[1] / div[2]").text
             exp.append(d)
 
         self.expediente = exp
@@ -176,7 +177,7 @@ class Licitaciones:
         for i in range(self.num_rows):
             d = \
                 self.driver.find_element(
-                    By.XPATH, f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[2] / div[2]").text
+                    By.XPATH, f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[2] / div[2]").text
             tipc.append(d)
 
         self.tipo_contrato = tipc
@@ -186,7 +187,7 @@ class Licitaciones:
         for i in range(self.num_rows):
             d = \
                 self.driver.find_element(
-                    By.XPATH, f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[3]").text
+                    By.XPATH, f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[3]").text
             estado.append(d)
 
         self.estado = estado
@@ -196,7 +197,7 @@ class Licitaciones:
         for i in range(self.num_rows):
             d = \
                 self.driver.find_element(
-                    By.XPATH, f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[4]").text
+                    By.XPATH, f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[4]").text
             importe.append(d)
 
         self.importe = importe
@@ -208,33 +209,33 @@ class Licitaciones:
                 d = \
                     self.driver.find_element(
                         By.XPATH,
-                        f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[5] / div[1] /span").text
+                        f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[5] / div[1] /span").text
                 d += " " + \
                     self.driver.find_element(
                         By.XPATH,
-                        f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[5] / div[2] / span[1]").text
+                        f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[5] / div[2] / span[1]").text
                 d += " " + \
                     self.driver.find_element(
                         By.XPATH,
-                        f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[5] / div[2] / span[2]").text
+                        f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[5] / div[2] / span[2]").text
                 d += " " + \
                     self.driver.find_element(
                         By.XPATH,
-                        f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[5] / div[3] / span[1]").text
+                        f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[5] / div[3] / span[1]").text
                 d += " " + \
                     self.driver.find_element(
                         By.XPATH,
-                        f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[5] / div[3] / span[2]").text
+                        f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[5] / div[3] / span[2]").text
                 fechas.append(d)
             else:
                 d = \
                     self.driver.find_element(
                         By.XPATH,
-                        f"//*[@id='myTablaBusquedaCustom']/tbody/tr[3]/td[5]/div/span[1]").text
+                        f"//*[@id='{TABLE_ID}']/tbody/tr[3]/td[5]/div/span[1]").text
                 d += " " + \
                      self.driver.find_element(
                          By.XPATH,
-                         f"//*[@id='myTablaBusquedaCustom']/tbody/tr[3]/td[5]/div/span[2]").text
+                         f"//*[@id='{TABLE_ID}']/tbody/tr[3]/td[5]/div/span[2]").text
                 fechas.append(d)
 
         self.fechas = fechas
@@ -244,7 +245,7 @@ class Licitaciones:
         for i in range(self.num_rows):
             d = \
                 self.driver.find_element(
-                    By.XPATH, f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[6] / a").text
+                    By.XPATH, f"// *[ @ id = '{TABLE_ID}'] / tbody / tr[{i + 1}] / td[6] / a").text
             org_contratacion.append(d)
 
         self.organo_contratacion = org_contratacion

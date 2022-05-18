@@ -1,5 +1,5 @@
 import os
-import time
+from datetime import datetime
 import openpyxl
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
@@ -142,7 +142,6 @@ class Licitaciones:
             (By.XPATH, "//*[@id='myTablaBusquedaCustom']/thead/tr/th[1]/div/span")))
 
         self.num_rows = len(self.driver.find_elements_by_xpath("//*[@id='myTablaBusquedaCustom']/tbody/tr"))
-        print("Rows in table are " + str(self.num_rows))
 
     def get_num_cols(self):
 
@@ -150,7 +149,6 @@ class Licitaciones:
             (By.XPATH, "//*[@id='myTablaBusquedaCustom']/thead/tr/th[1]/div/span")))
 
         self.num_cols = len(self.driver.find_elements_by_xpath("//*[@id='myTablaBusquedaCustom']/tbody/tr[2]/td"))
-        print("Columns in table are " + str(self.num_cols))
 
     def get_data(self):
 
@@ -159,7 +157,6 @@ class Licitaciones:
         for i in range(self.num_cols):
             t = \
                 self.driver.find_element(By.XPATH, f"//*[@id='myTablaBusquedaCustom']/thead/tr/th[{i+1}]/div/span").text
-            print(t)
             titles.append(t)
 
         self.titles = titles
@@ -190,7 +187,6 @@ class Licitaciones:
             d = \
                 self.driver.find_element(
                     By.XPATH, f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[3]").text
-            print(d)
             estado.append(d)
 
         self.estado = estado
@@ -201,7 +197,6 @@ class Licitaciones:
             d = \
                 self.driver.find_element(
                     By.XPATH, f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[4]").text
-            print(d)
             importe.append(d)
 
         self.importe = importe
@@ -230,7 +225,6 @@ class Licitaciones:
                     self.driver.find_element(
                         By.XPATH,
                         f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[5] / div[3] / span[2]").text
-                print(d)
                 fechas.append(d)
             else:
                 d = \
@@ -241,7 +235,6 @@ class Licitaciones:
                      self.driver.find_element(
                          By.XPATH,
                          f"//*[@id='myTablaBusquedaCustom']/tbody/tr[3]/td[5]/div/span[2]").text
-                print(d)
                 fechas.append(d)
 
         self.fechas = fechas
@@ -252,7 +245,6 @@ class Licitaciones:
             d = \
                 self.driver.find_element(
                     By.XPATH, f"// *[ @ id = 'myTablaBusquedaCustom'] / tbody / tr[{i + 1}] / td[6] / a").text
-            print(d)
             org_contratacion.append(d)
 
         self.organo_contratacion = org_contratacion
@@ -261,8 +253,6 @@ class Licitaciones:
 
         my_wb = openpyxl.Workbook()
         my_sheet = my_wb.active
-
-        print(self.titles)
 
         # cabeceras
         for i in range(self.num_cols):
@@ -302,7 +292,9 @@ class Licitaciones:
         my_wb.save("licitaciones.xlsx")
 
     def move_file(self):
-        os.rename("./licitaciones.xlsx", self.ruta_expedientes+"/licitaciones.xlsx")
+        now=datetime.today()
+        os.rename("./licitaciones.xlsx", self.ruta_expedientes+"/licitaciones-" +
+                  str(datetime.today().strftime('%A-%B-%d-%Y-%H-%M-%S'))+".xlsx")
 
 
 

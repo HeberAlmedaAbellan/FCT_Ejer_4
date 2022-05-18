@@ -256,10 +256,6 @@ class Licitaciones:
         my_sheet = my_wb.active
 
         # cabeceras
-
-        print(self.titles)
-        print(self.num_cols)
-
         for i in range(self.num_cols):
             c1 = my_sheet.cell(row=1, column=i+1)
             c1.value = self.titles[i]
